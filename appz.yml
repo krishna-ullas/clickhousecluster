@@ -1,0 +1,43 @@
+    app:
+        name: ClickHouseCluster
+        code: clickhousecluster
+        notify: apaul@ecloudcontrol.com
+
+    build:
+        version: 25.4.3.22
+        env: POC
+        build_file: none
+        output_files: output/*.zip
+        image_template: clickhousecluster-25.4.3.22
+
+    deploy:
+        context: alpha/POC
+        type: statefulset
+        replicas: 1
+        resources: x-large
+        port:
+        - 8081
+
+    volumes:
+      - claim: clickhouse-data
+        mount: /appz/data
+        name: data
+        size: 5Gi
+        matchLabels: false
+      # - claim: mysql-backup
+      #   mount: /appz/backup
+      #   name: backup
+      #   size: 5Gi
+
+    properties:
+        CLICKHOUSE_CLUSTER_NAME: mmch
+        CLICKHOUSE_USER: default
+        CLICKHOUSE_PASSWORD:
+          vault: CLICKHOUSE_PASSWORD
+        CLICKHOUSE_NODES: 0@clickhousecluster-0:9000,1@clickhousecluster-1:9000,2@clickhousecluster-2:9000,3@clickhousecluster-3:9000,4@clickhousecluster-4:9000
+        KEEPER_NODES: clickhousecluster-0:9181,clickhousecluster-1:9181,clickhousecluster-2:9181,clickhousecluster-3:9181,clickhousecluster-4:9181
+        REPLICATION_FACTOR: 5
+        FLINK_LOG_DIR: /appz/log
+        SHARD_COUNT: 1
+        ENABLE_FLUENTD: 1
+        revision : 1
