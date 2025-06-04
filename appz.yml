@@ -4,14 +4,14 @@
         notify: apaul@ecloudcontrol.com
 
     build:
-        version: 25.4.3.22
-        env: POC
+        version: 25.4
+        env: DEV
         build_file: none
         output_files: output/*.zip
-        image_template: clickhousecluster-25.4.3.22
+        image_template: clickhousecluster-25.4
 
     deploy:
-        context: alpha/POC
+        context: alpha/DEV
         type: statefulset
         replicas: 1
         resources: x-large
