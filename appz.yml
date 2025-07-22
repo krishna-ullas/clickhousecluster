@@ -34,8 +34,8 @@
         CLICKHOUSE_USER: default
         CLICKHOUSE_PASSWORD:
           vault: CLICKHOUSE_PASSWORD
-        CLICKHOUSE_NODES: 0@clickhousecluster-0:9000,1@clickhousecluster-1:9000,2@clickhousecluster-2:9000,3@clickhousecluster-3:9000,4@clickhousecluster-4:9000
-        KEEPER_NODES: clickhousecluster-0:9181,clickhousecluster-1:9181,clickhousecluster-2:9181,clickhousecluster-3:9181,clickhousecluster-4:9181
+        CLICKHOUSE_NODES: 0@clickhousecluster-0:9000
+        KEEPER_NODES: clickhousecluster-0:9181
         REPLICATION_FACTOR: 5
         FLINK_LOG_DIR: /appz/log
         SHARD_COUNT: 1
