@@ -1,7 +1,7 @@
     app:
         name: ClickHouseCluster
         code: clickhousecluster
-        notify: apaul@ecloudcontrol.com
+        notify: kullas@ecloudcontrol.com
 
     build:
         version: 25.4
@@ -11,9 +11,9 @@
         image_template: clickhousecluster-25.4
 
     deploy:
-        context: alpha/DEV
+        context: krishna-ullas/DEV
         type: statefulset
-        replicas: 1
+        replicas: 3
         resources: x-large
         port:
         - 8081
@@ -24,20 +24,15 @@
         name: data
         size: 5Gi
         matchLabels: false
-      # - claim: mysql-backup
-      #   mount: /appz/backup
-      #   name: backup
-      #   size: 5Gi
 
     properties:
         CLICKHOUSE_CLUSTER_NAME: mmch
         CLICKHOUSE_USER: default
         CLICKHOUSE_PASSWORD:
           vault: CLICKHOUSE_PASSWORD
-        CLICKHOUSE_NODES: 0@clickhousecluster-0:9000
-        KEEPER_NODES: clickhousecluster-0:9181
-        REPLICATION_FACTOR: 5
-        FLINK_LOG_DIR: /appz/log
+        CLICKHOUSE_NODES: 0@clickhousecluster-0:9000,1@clickhousecluster-1:9000,2@clickhousecluster-2:9000
+        KEEPER_NODES: clickhousecluster-0:9181,clickhousecluster-1:9181,clickhousecluster-2:9181
+        REPLICATION_FACTOR: 3
         SHARD_COUNT: 1
-        ENABLE_FLUENTD: 1
-        revision : 18
+        ENABLE_FLUENTD: 0
+        revision : 1
