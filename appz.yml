@@ -30,8 +30,8 @@
         CLICKHOUSE_USER: default
         CLICKHOUSE_PASSWORD:
           vault: CLICKHOUSE_PASSWORD
-        CLICKHOUSE_NODES: 0@clickhousecluster-25-4-0.clickhousecluster-25-4:9000,1@clickhousecluster-25-4-1.clickhousecluster-25-4:9000,2@clickhousecluster-25-4-2.clickhousecluster-25-4:9000
-        KEEPER_NODES: clickhousecluster-25-4-0.clickhousecluster-25-4:9181,clickhousecluster-25-4-1.clickhousecluster-25-4:9181,clickhousecluster-25-4-2.clickhousecluster-25-4:9181
+        CLICKHOUSE_NODES: 0@clickhousecluster-25-4-0.clickhousecluster-25-4:9000,1@clickhousecluster-25-4-1.clickhousecluster-25-4:9000
+        KEEPER_NODES: clickhousecluster-25-4-0.clickhousecluster-25-4:9181,clickhousecluster-25-4-1.clickhousecluster-25-4:9181
         REPLICATION_FACTOR: 3
         SHARD_COUNT: 1
         ENABLE_FLUENTD: 0
