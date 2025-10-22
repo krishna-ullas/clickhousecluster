@@ -5,13 +5,13 @@
 
     build:
         version: 25.4
-        env: DEV
+        env: PROD
         build_file: none
         output_files: output/*.zip
         image_template: clickhousecluster-25.4
 
     deploy:
-        context: alpha/DEV
+        context: vv/PROD
         type: statefulset
         replicas: 1
         resources: x-large
