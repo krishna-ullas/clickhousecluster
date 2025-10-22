@@ -40,4 +40,4 @@
         FLINK_LOG_DIR: /appz/log
         SHARD_COUNT: 1
         ENABLE_FLUENTD: 1
-        revision : 0
+        revision : 1
