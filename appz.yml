@@ -30,7 +30,7 @@
       #   size: 5Gi
 
     properties:
-        CLICKHOUSE_CLUSTER_NAME: mmch
+        CLICKHOUSE_CLUSTER_NAME: vv-dev
         CLICKHOUSE_USER: default
         CLICKHOUSE_PASSWORD:
           vault: CLICKHOUSE_PASSWORD
